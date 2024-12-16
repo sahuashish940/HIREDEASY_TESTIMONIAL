@@ -10,18 +10,21 @@
     <div class="bg-white p-8 rounded-lg shadow-md text-center max-w-md">
         <h1 class="text-3xl font-bold text-green-500 mb-4">Thank You!</h1>
         <p class="text-lg text-gray-700 mb-4">Your testimonial has been successfully submitted.</p>
-        <p class="text-lg font-semibold text-blue-600 mb-6">Thank you, {{ name }}!</p>
+        <p class="text-lg font-semibold text-blue-600 mb-6">
+            Thank you, <span id="name"></span>!
+        </p>
 
-        <!-- Close Button -->
-        <button onclick="closeWindow()" 
-            class="bg-blue-500 text-white font-medium py-2 px-6 rounded hover:bg-blue-600 transition">
-            Close
-        </button>
     </div>
 
     <script>
-        function closeWindow() {
-            window.close(); // Closes the browser tab or window
+        // Extract the name from the URL query parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const name = urlParams.get('name');
+
+        if (name) {
+            document.getElementById('name').textContent = decodeURIComponent(name);
+        } else {
+            document.getElementById('name').textContent = ""; // Remove 'Guest' default
         }
     </script>
 </body>
