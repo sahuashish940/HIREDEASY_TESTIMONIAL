@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiredeasy Testimonial</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-gray-100 via-gray-300 to-gray-500 font-sans leading-normal tracking-normal">
+
+<div class="max-w-4xl mx-auto my-10 p-8 bg-white rounded-lg shadow-lg">
+    <!-- Logo -->
+    <div class="text-center mb-6">
+        <img src="https://hiredeasy.com/Hiredeasy.png" alt="Hired Easy Logo" class="h-32 mx-auto">
+    </div>
+
+    <!-- Form Title -->
+    <h1 class="text-3xl font-bold mb-6 text-center text-gray-800">Hiredeasy Testimonial</h1>
+
+    <!-- Form -->
+    <form action="/" method="POST" enctype="multipart/form-data" class="space-y-6">
+        <!-- Client Name -->
+        <div>
+            <label for="client_name" class="block text-gray-700 font-medium mb-2">Client Name</label>
+            <input type="text" id="client_name" name="client_name" placeholder="Enter your name" required
+                class="w-full p-3 border border-gray-300 rounded-md bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-400 shadow-sm">
+        </div>
+
+        <!-- Description -->
+        <div>
+            <label for="description" class="block text-gray-700 font-medium mb-2">Description</label>
+            <textarea id="description" name="description" rows="4" placeholder="Write your testimonial here..." required
+                class="w-full p-3 border border-gray-300 rounded-md bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-400 shadow-sm"></textarea>
+        </div>
+
+        <!-- LinkedIn URL -->
+        <div>
+            <label for="linkedin_url" class="block text-gray-700 font-medium mb-2">LinkedIn URL</label>
+            <input type="url" id="linkedin_url" name="linkedin_url" placeholder="Enter LinkedIn URL" required
+                class="w-full p-3 border border-gray-300 rounded-md bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-400 shadow-sm">
+        </div>
+
+        <!-- Position -->
+        <div>
+            <label for="position" class="block text-gray-700 font-medium mb-2">Position at Company & Location</label>
+            <input type="text" id="position" name="position" placeholder="e.g., Manager at TechCorp, NY" required
+                class="w-full p-3 border border-gray-300 rounded-md bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-400 shadow-sm">
+        </div>
+
+        <!-- Profile Image -->
+        <div>
+            <label for="profile_image" class="block text-gray-700 font-medium mb-2">Profile Image</label>
+            <label class="cursor-pointer flex items-center gap-2 bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition w-fit">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 16l5 5m0 0l5-5m-5 5V4" />
+                </svg>
+                Choose File
+                <input type="file" id="profile_image" name="profile_image" accept="image/*" class="hidden" required onchange="previewImage(event, 'profilePreview')">
+            </label>
+            <img id="profilePreview" src="" alt="Profile Preview" class="mt-4 hidden w-32 h-32 object-cover rounded-md shadow-md">
+        </div>
+
+        <!-- Company Image -->
+        <div>
+            <label for="company_image" class="block text-gray-700 font-medium mb-2">Company Image</label>
+            <label class="cursor-pointer flex items-center gap-2 bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition w-fit">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 16l5 5m0 0l5-5m-5 5V4" />
+                </svg>
+                Choose File
+                <input type="file" id="company_image" name="company_image" accept="image/*" class="hidden" required onchange="previewImage(event, 'companyPreview')">
+            </label>
+            <img id="companyPreview" src="" alt="Company Preview" class="mt-4 hidden w-32 h-32 object-cover rounded-md shadow-md">
+        </div>
+
+        <!-- Submit Button -->
+        <div class="text-center">
+            <button type="submit" 
+                class="bg-blue-500 text-white font-medium py-2 px-6 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 transition">
+                Submit Testimonial
+            </button>
+        </div>
+    </form>
+</div>
+
+<!-- JavaScript for Image Preview -->
+<script>
+    function previewImage(event, previewId) {
+        const input = event.target;
+        const preview = document.getElementById(previewId);
+
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+                preview.classList.remove('hidden');
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+
+</body>
+</html>
